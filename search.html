@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Articles - GreenNookGarden</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .search-page-hero {
+            padding: 80px 0 40px;
+            background: var(--bg-light);
+        }
+
+        .search-page-title {
+            font-size: 42px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .search-page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .large-search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--bg-color);
+            border-radius: 50px;
+            padding: 20px 35px;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .large-search-box:focus-within {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 40px rgba(116, 185, 255, 0.2);
+        }
+
+        .large-search-box i {
+            color: var(--accent-color);
+            font-size: 20px;
+            margin-right: 20px;
+        }
+
+        .large-search-box input {
+            border: none;
+            background: none;
+            width: 100%;
+            font-size: 18px;
+            outline: none;
+            color: var(--text-color);
+        }
+
+        .large-search-box input::placeholder {
+            color: var(--text-light);
+        }
+
+        .clear-search {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px 10px;
+            transition: var(--transition);
+            display: none;
+        }
+
+        .clear-search:hover {
+            color: var(--primary-color);
+        }
+
+        .clear-search.active {
+            display: block;
+        }
+
+        .search-filters {
+            max-width: 700px;
+            margin: 30px auto;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-chip {
+            padding: 10px 20px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .filter-chip:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .filter-chip.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .search-results-section {
+            padding: 60px 0;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .results-count {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .results-count strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .sort-dropdown {
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            background: var(--bg-color);
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .sort-dropdown:focus {
+            border-color: var(--accent-color);
+        }
+
+        .no-results-message {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .no-results-message i {
+            font-size: 64px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .no-results-message h3 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .no-results-message p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .suggested-searches {
+            margin-top: 30px;
+        }
+
+        .suggested-searches h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .suggestion-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .suggestion-chip {
+            padding: 8px 18px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .suggestion-chip:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .search-page-title {
+                font-size: 32px;
+            }
+
+            .large-search-box {
+                padding: 15px 25px;
+            }
+
+            .large-search-box input {
+                font-size: 16px;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-filters {
+                gap: 10px;
+            }
+
+            .filter-chip {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-leaf"></i>
+                        <span>GreenNookGarden</span>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="search.html" class="active">Search</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Page Hero -->
+    <section class="search-page-hero">
+        <div class="container">
+            <h1 class="search-page-title">Find Your Perfect Article</h1>
+            <p class="search-page-subtitle">Search through our collection of lifestyle guides and reviews</p>
+            
+            <div class="large-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="mainSearchInput" placeholder="Search for articles, topics, or categories..." autofocus>
+                <button class="clear-search" id="clearSearch" aria-label="Clear search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="search-filters">
+                <button class="filter-chip active" data-filter="all">All Categories</button>
+                <button class="filter-chip" data-filter="fashion">Fashion</button>
+                <button class="filter-chip" data-filter="health">Health & Beauty</button>
+                <button class="filter-chip" data-filter="home">Home & Garden</button>
+                <button class="filter-chip" data-filter="travel">Travel</button>
+                <button class="filter-chip" data-filter="finance">Finance</button>
+                <button class="filter-chip" data-filter="food">Food & Beverage</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results -->
+    <section class="search-results-section">
+        <div class="container">
+            <div class="results-header">
+                <div class="results-count" id="resultsCount">
+                    Showing <strong id="resultNumber">5</strong> articles
+                </div>
+                <select class="sort-dropdown" id="sortDropdown">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">Title (A-Z)</option>
+                </select>
+            </div>
+
+            <div class="articles-grid" id="searchResultsGrid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="fashion" data-date="2025-08-15" data-title="Essential Summer Fashion Trends for 2025">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop" alt="Summer Fashion Trends">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Fashion & Accessories</span>
+                        <h3 class="article-title">
+                            <a href="articles/summer-fashion-trends-2025.html">Essential Summer Fashion Trends for 2025</a>
+                        </h3>
+                        <p class="article-excerpt">Discover the must-have fashion pieces that will define your summer wardrobe this year.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> August 15, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="health" data-date="2025-06-20" data-title="The Ultimate Morning Skincare Routine">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop" alt="Skincare Routine">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Health & Beauty</span>
+                        <h3 class="article-title">
+                            <a href="articles/ultimate-skincare-routine.html">The Ultimate Morning Skincare Routine</a>
+                        </h3>
+                        <p class="article-excerpt">Transform your skin with this comprehensive guide to morning skincare essentials.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> June 20, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="home" data-date="2025-05-10" data-title="Best Indoor Plants for Every Room">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Indoor Plants">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Home & Garden</span>
+                        <h3 class="article-title">
+                            <a href="articles/indoor-plants-guide.html">Best Indoor Plants for Every Room</a>
+                        </h3>
+                        <p class="article-excerpt">Create a healthier home environment with these easy-to-care-for indoor plants.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> May 10, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="travel" data-date="2025-03-25" data-title="Top 10 Mountain Retreat Destinations">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Mountain Travel">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Travel & Accommodation</span>
+                        <h3 class="article-title">
+                            <a href="articles/mountain-retreat-destinations.html">Top 10 Mountain Retreat Destinations</a>
+                        </h3>
+                        <p class="article-excerpt">Escape to these breathtaking mountain destinations for the perfect peaceful getaway.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> March 25, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="food" data-date="2025-01-18" data-title="Quick and Healthy Weeknight Recipes">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Healthy Recipes">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Food & Beverage</span>
+                        <h3 class="article-title">
+                            <a href="articles/quick-healthy-recipes.html">Quick and Healthy Weeknight Recipes</a>
+                        </h3>
+                        <p class="article-excerpt">Delicious and nutritious recipes that can be prepared in under 30 minutes.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> January 18, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- No Results Message (Hidden by default) -->
+            <div class="no-results-message" id="noResultsMessage" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Articles Found</h3>
+                <p>We couldn't find any articles matching your search. Try different keywords or browse by category.</p>
+                
+                <div class="suggested-searches">
+                    <h4>Popular Searches:</h4>
+                    <div class="suggestion-chips">
+                        <button class="suggestion-chip" data-suggestion="fashion">Fashion Trends</button>
+                        <button class="suggestion-chip" data-suggestion="skincare">Skincare Tips</button>
+                        <button class="suggestion-chip" data-suggestion="plants">Indoor Plants</button>
+                        <button class="suggestion-chip" data-suggestion="travel">Travel Guides</button>
+                        <button class="suggestion-chip" data-suggestion="recipes">Healthy Recipes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Widget -->
+    <section class="social-widget">
+        <div class="container">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.pinterest.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://www.youtube.com/@GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GreenNookGarden</h4>
+                    <p>Your trusted source for lifestyle reviews and recommendations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="search.html">Search</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GreenNookGarden. All rights reserved. | <a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="terms-of-service.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/search.js"></script>
+</body>
+</html>
+

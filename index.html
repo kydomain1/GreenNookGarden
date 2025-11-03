@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenNookGarden - Lifestyle & Product Reviews</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-leaf"></i>
+                        <span>GreenNookGarden</span>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="search.html"><i class="fas fa-search"></i></a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Life's Best</h1>
+                <p class="hero-subtitle">Curated reviews and recommendations for modern living</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="container">
+            <form id="homeSearchForm" onsubmit="event.preventDefault(); performSearch();">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon-btn" onclick="performSearch();" style="cursor: pointer;" title="Search"></i>
+                    <input type="text" id="searchInput" placeholder="Search articles and press Enter...">
+                    <button type="button" class="advanced-search-btn" onclick="window.location.href='search.html';" title="Advanced Search">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 15px; font-size: 14px; color: var(--text-light);">
+                Press <kbd style="padding: 2px 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-light);">Enter</kbd> to search, or 
+                <a href="search.html" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">
+                    <i class="fas fa-arrow-right"></i> browse all articles
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Categories</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="fashion" onclick="window.location.href='search.html?category=fashion';" style="cursor: pointer;">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Fashion & Accessories</h3>
+                </div>
+                <div class="category-card" data-category="health" onclick="window.location.href='search.html?category=health';" style="cursor: pointer;">
+                    <i class="fas fa-heart-pulse"></i>
+                    <h3>Health & Beauty</h3>
+                </div>
+                <div class="category-card" data-category="home" onclick="window.location.href='search.html?category=home';" style="cursor: pointer;">
+                    <i class="fas fa-home"></i>
+                    <h3>Home & Garden</h3>
+                </div>
+                <div class="category-card" data-category="travel" onclick="window.location.href='search.html?category=travel';" style="cursor: pointer;">
+                    <i class="fas fa-plane"></i>
+                    <h3>Travel & Accommodation</h3>
+                </div>
+                <div class="category-card" data-category="finance" onclick="window.location.href='search.html?category=finance';" style="cursor: pointer;">
+                    <i class="fas fa-coins"></i>
+                    <h3>Finance & Insurance</h3>
+                </div>
+                <div class="category-card" data-category="food" onclick="window.location.href='search.html?category=food';" style="cursor: pointer;">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food & Beverage</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="articles">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="fashion" data-date="2025-08-15">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=600&fit=crop" alt="Summer Fashion Trends">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Fashion & Accessories</span>
+                        <h3 class="article-title">
+                            <a href="articles/summer-fashion-trends-2025.html">Essential Summer Fashion Trends for 2025</a>
+                        </h3>
+                        <p class="article-excerpt">Discover the must-have fashion pieces that will define your summer wardrobe this year.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> August 15, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="health" data-date="2025-06-20">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop" alt="Skincare Routine">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Health & Beauty</span>
+                        <h3 class="article-title">
+                            <a href="articles/ultimate-skincare-routine.html">The Ultimate Morning Skincare Routine</a>
+                        </h3>
+                        <p class="article-excerpt">Transform your skin with this comprehensive guide to morning skincare essentials.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> June 20, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="home" data-date="2025-05-10">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Indoor Plants">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Home & Garden</span>
+                        <h3 class="article-title">
+                            <a href="articles/indoor-plants-guide.html">Best Indoor Plants for Every Room</a>
+                        </h3>
+                        <p class="article-excerpt">Create a healthier home environment with these easy-to-care-for indoor plants.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> May 10, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="travel" data-date="2025-03-25">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Mountain Travel">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Travel & Accommodation</span>
+                        <h3 class="article-title">
+                            <a href="articles/mountain-retreat-destinations.html">Top 10 Mountain Retreat Destinations</a>
+                        </h3>
+                        <p class="article-excerpt">Escape to these breathtaking mountain destinations for the perfect peaceful getaway.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> March 25, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="food" data-date="2025-01-18">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Healthy Recipes">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Food & Beverage</span>
+                        <h3 class="article-title">
+                            <a href="articles/quick-healthy-recipes.html">Quick and Healthy Weeknight Recipes</a>
+                        </h3>
+                        <p class="article-excerpt">Delicious and nutritious recipes that can be prepared in under 30 minutes.</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> January 18, 2025
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Widget -->
+    <section class="social-widget">
+        <div class="container">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.pinterest.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://www.youtube.com/@GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GreenNookGarden</h4>
+                    <p>Your trusted source for lifestyle reviews and recommendations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GreenNookGarden. All rights reserved. | <a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="terms-of-service.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+

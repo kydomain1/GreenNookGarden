@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GreenNookGarden</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-leaf"></i>
+                        <span>GreenNookGarden</span>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                        <li><a href="search.html"><i class="fas fa-search"></i></a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Get In Touch</h1>
+            <p class="page-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="content-section">
+                <h2>Contact Information</h2>
+                <p>Whether you have a question about our content, want to suggest a topic, or simply want to say hello, we're here for you. Your feedback helps us create better content and serve our community more effectively.</p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="How can we help you?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info Grid -->
+            <div style="margin-top: 80px;">
+                <div class="category-grid">
+                    <div class="category-card">
+                        <i class="fas fa-envelope" style="color: var(--accent-color);"></i>
+                        <h3>Email Us</h3>
+                        <p style="color: var(--text-light); margin-top: 15px;">info@greennookgarden.com</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-clock" style="color: var(--accent-color);"></i>
+                        <h3>Response Time</h3>
+                        <p style="color: var(--text-light); margin-top: 15px;">Within 24-48 hours</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-comments" style="color: var(--accent-color);"></i>
+                        <h3>Social Media</h3>
+                        <p style="color: var(--text-light); margin-top: 15px;">Follow us for daily updates</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" style="margin-top: 60px;">
+                <h2>Frequently Asked Questions</h2>
+                
+                <h3>How can I contribute to GreenNookGarden?</h3>
+                <p>We're always looking for passionate writers and contributors. If you have expertise in any of our coverage areas and would like to share your knowledge, please reach out through the contact form above with your pitch and writing samples.</p>
+
+                <h3>Do you accept product review requests?</h3>
+                <p>We maintain editorial independence and select products to review based on reader interest and our team's assessment of value and quality. While we appreciate product submissions, we cannot guarantee reviews for all requests. Please send product information to our email address for consideration.</p>
+
+                <h3>How can I advertise on GreenNookGarden?</h3>
+                <p>We offer various partnership and advertising opportunities for brands that align with our values. Please contact us with "Advertising Inquiry" in the subject line for more information about our media kit and rates.</p>
+
+                <h3>Can I republish your content?</h3>
+                <p>All content on GreenNookGarden is copyrighted. If you'd like to republish or reference our articles, please contact us for permission. We're happy to work with publications that provide proper attribution and linking.</p>
+
+                <h3>How do I unsubscribe from your newsletter?</h3>
+                <p>Every newsletter includes an unsubscribe link at the bottom. Click that link to be immediately removed from our mailing list. We respect your inbox and your choice to opt out at any time.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Join Our Newsletter</h2>
+                <p>Stay updated with our latest articles, exclusive tips, and special recommendations delivered directly to your inbox. We respect your privacy and will never spam you or share your information.</p>
+                
+                <div style="max-width: 500px; margin: 30px auto; text-align: center;">
+                    <div class="search-box" style="margin-bottom: 20px;">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Enter your email address" style="font-size: 15px;">
+                    </div>
+                    <button class="submit-btn">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Widget -->
+    <section class="social-widget">
+        <div class="container">
+            <h3>Follow Us on Social Media</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.pinterest.com/greennookgarden" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://www.youtube.com/@GreenNookGarden" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GreenNookGarden</h4>
+                    <p>Your trusted source for lifestyle reviews and recommendations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="search.html">Search</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GreenNookGarden. All rights reserved. | <a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="terms-of-service.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
