@@ -635,6 +635,22 @@ img {
     color: var(--text-color);
 }
 
+.article-body a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: underline;
+    background: rgba(116, 185, 255, 0.15);
+    padding: 0 4px;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.article-body a:hover,
+.article-body a:focus {
+    background: rgba(116, 185, 255, 0.3);
+    color: #1a4b78;
+}
+
 .article-body ul, .article-body ol {
     margin: 20px 0;
     padding-left: 30px;
